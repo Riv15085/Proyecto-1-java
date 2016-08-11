@@ -3,22 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-/**
- *
- * Diego Fernando Rivera Escobar 15085
- * Programación orientada a objetos
- */
+/*
+Universidad del Valle de Guatemala
+Proyecto1 AED
+Juan Pablo Cahueque
+Enma Lopez
+Diego Rivera
+Jorge Tezen
+LecturaArchivo.java
+*/
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 
-/**
- * @author Juan Pablo Cahueque 15396
- * @author Enma Lopez 15122
- */
+
 public class LecturaArchivo {
     public static Vector mostrarContenido(String archivo) throws FileNotFoundException, IOException {
         Vector parrafo = new Vector(20,5);

@@ -30,17 +30,17 @@ import java.util.Vector;
     public Sensor() {
         archivo = "C:\\Users\\JuanPablo\\Documents\\NetBeansProjects\\Proyecto\\src\\Proyecto\\laberintoComplejo.txt";
         //Descomente aqui para volver la lectura mas dinamica (si no quiere cambiar la direccion manualmente)
-//        try{
-//            JFileChooser chooser = new JFileChooser();
-//            int returnVal = chooser.showOpenDialog(null);
-//            if (returnVal == JFileChooser.APPROVE_OPTION){
-//                System.out.println("Usted eligio este archivo: " + chooser.getSelectedFile().getName());
-//                archivo = chooser.getSelectedFile().getAbsolutePath();
-//            }
-//        }
-//        catch (Exception e){
-//            System.out.println(e);
-//        }
+        try{
+            JFileChooser chooser = new JFileChooser();
+            int returnVal = chooser.showOpenDialog(null);
+            if (returnVal == JFileChooser.APPROVE_OPTION){
+                System.out.println("Usted eligio este archivo: " + chooser.getSelectedFile().getName());
+                archivo = chooser.getSelectedFile().getAbsolutePath();
+            }
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
         try{
             parrafo = LecturaArchivo.mostrarContenido(archivo);
             contador = parrafo.size();

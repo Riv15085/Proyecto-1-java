@@ -1,7 +1,18 @@
-/**
- *
- * @author Enma Lopez
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
+/*
+Universidad del Valle de Guatemala
+Proyecto1 AED
+Juan Pablo Cahueque
+Enma Lopez
+Diego Rivera
+Jorge Tezen
+Decision.java
+*/
+//En la simulacion esta clase se encarga de tomar una decision en base al estado de los sensores en cada nodo
 public class Decision {
         private boolean right;
         private boolean left;
@@ -48,69 +59,42 @@ public class Decision {
 
     }
 
-	public String decidir(String decision){
-            mensaje = "";
-		switch (decision){
-			case "xxx":
-				right = false;
-                                front = false;
-                                left = false;
-                                mensaje = "STOP";
-                                return mensaje;
-                               
-			case "xxo":
-				right= false;
-                                front = false;
-                                left = true;
-                                mensaje = "Girar Derecha";
-				 return mensaje;
-                            
-			case "xoo":
-				right = false;
-                                front = true;
-                                left = true;
-                                mensaje = "Seguir Recto";
-                                 return mensaje;
-				
-			case "oxx":
-			        right = true;
-                                front = true;
-                                left = true;
-                                mensaje = "Girar Izquierda";
-                                return mensaje;
-                            
-	                case "oxo":
-			        right= true;
-                                front = false;
-                                left = true;
-                                mensaje = "Girar Derecha";
-                                 return mensaje;
-				
-			case "oox":
-				right = true;
-				front = true;
-				left = false;
-                                mensaje = "Seguir Recto";
-				 return mensaje;
-                            
-                        case "ooo":
-                                right = true;
-				front = true;
-				left = true;
-                                mensaje = "Seguir Recto";
-                                return mensaje;
-                        case "xox":
-                                right = true;
-				front = true;
-				left = true;
-                                mensaje = "Seguir Recto";
-                                return mensaje;
-                        default:
-                            mensaje = "IDiota";
-                            
-		}
+    public String decidir(String decision){
+        mensaje = "";
+        switch (decision){
+            case "xxx":
+                mensaje = "STOP";
                 return mensaje;
-               
-	}
 
+            case "xxo":
+                mensaje = "Girar Derecha y avanzar";
+                return mensaje;
+
+            case "xoo":
+                mensaje = "Girar Derecha y avanzar";
+                 return mensaje;
+
+            case "oxx":
+                mensaje = "Girar Izquierda y avanzar";
+                return mensaje;
+
+            case "oxo":
+                mensaje = "Girar Derecha y avanzar";
+                 return mensaje;
+
+            case "oox":
+                mensaje = "Seguir Recto";
+                return mensaje;
+
+            case "ooo":
+                mensaje = "Seguir Recto";
+                return mensaje;
+            case "xox":
+                mensaje = "Seguir Recto";
+                return mensaje;
+            default:
+                mensaje = "Laberinto mal elaborado";
+        }
+        return mensaje;     
+    }
 }

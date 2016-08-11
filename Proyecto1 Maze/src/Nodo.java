@@ -1,3 +1,22 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+/*
+Universidad del Valle de Guatemala
+Proyecto1 AED
+Juan Pablo Cahueque
+Enma Lopez
+Diego Rivera
+Jorge Tezen
+Nodo.java
+*/
+
+/**
+ *
+ * @author JuanPablo
+ */
 /**
  *
  * Jorge Mario Tezen 
@@ -21,74 +40,68 @@ public class Nodo{
     
     public Nodo(String decision)
     {
-      MiDecision = new Decision();
-      movimiento= MiDecision.decidir(decision);
-      switch (decision){
-	case "xxx":
-            Derecha = false;
-            Recto = false;
-            Izquierda = false;    
-        case "xxo":
-            Derecha= false;
-            Recto = false;
-            Izquierda = true;
-                            
-	case "xoo":
-            Derecha = false;
-            Recto = true;
-            Izquierda = true;
-                            	
-	case "oxx":
-            Derecha = true;
-            Recto = true;
-            Izquierda = true;
-                         
-	case "oxo":
-            Derecha= true;
-            Recto = false;
-            Izquierda = true;
-				
-        case "oox":
-                Derecha = true;
+        //Al crear el nodo se le indica cual sera su movimiento
+        //Dependiendo del movimiento se baja la bandera del camino que tomo 
+        MiDecision = new Decision();
+        movimiento= MiDecision.decidir(decision);
+        switch (decision){
+            case "xxx":
+                Derecha = false;
+                Recto = false;
+                Izquierda = false;   
+                break;
+            case "xxo":
+                Derecha= false;
+                Recto = false;
+                Izquierda = false;
+                break;
+
+            case "xoo":
+                Derecha = false;
                 Recto = true;
                 Izquierda = false;
-            
-        case "ooo":
+                break;
+
+            case "oxx":
+                Derecha = false;
+                Recto = false;
+                Izquierda = false;
+                break;
+
+            case "oxo":
+                Derecha= false;
+                Recto = false;
+                Izquierda = true;
+                break;
+
+            case "oox":
+                Derecha = false;
+                Recto = false;
+                Izquierda = true;
+                break;
+
+            case "ooo":
+                Derecha = false;
+                Recto = true;
+                Izquierda = true;
+                break;
+
+            case "xox":
+                Derecha = false;
+                Recto = false;
+                Izquierda = false;
+                break;
+            default:
                 Derecha = true;
                 Recto = true;
                 Izquierda = true;
-                                
-        case "xox":
-                Derecha = true;
-                Recto = true;
-                Izquierda = true;
-                             
-        default:
-                Derecha = true;
-                Recto = true;
-                Izquierda = true;
-                            
-	}
-               
-	
-      switch (movimiento){
-          case "Seguir Recto":
-              this.Recto = false; 
-          case "STOP":
-              this.Recto = false; 
-              this.Izquierda = false; 
-              this.Derecha = false;
-          case ("Girar Derecha"):
-              this.Derecha = false;
-          case ("Girar Izquierda"):
-              this.Izquierda = false;
-          default:
-              System.out.println(movimiento);
-      }
+                break;
+        }
+        
     }
       
       
-    public void setMovimiento(String valor)
+    public void setMovimiento(String movimiento)
     {
         this.movimiento=movimiento;
     }

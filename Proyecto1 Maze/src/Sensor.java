@@ -1,3 +1,12 @@
+/*
+Universidad del Valle de Guatemala
+Proyecto1 AED
+Juan Pablo Cahueque
+Enma Lopez
+Diego Rivera
+Jorge Tezen
+Motor.java
+*/
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
@@ -9,7 +18,7 @@ import java.util.Vector;
  *
  * @author JuanPablo
  */
-    
+    //Para la simulacion esta clase lee el archivo que simula el laberinto y contiene las detecciones
     public class Sensor {
     
     private String archivo;
@@ -19,18 +28,24 @@ import java.util.Vector;
     
     
     public Sensor() {
+        archivo = "C:\\Users\\JuanPablo\\Documents\\NetBeansProjects\\Proyecto\\src\\Proyecto\\laberintoComplejo.txt";
+        //Descomente aqui para volver la lectura mas dinamica (si no quiere cambiar la direccion manualmente)
+//        try{
+//            JFileChooser chooser = new JFileChooser();
+//            int returnVal = chooser.showOpenDialog(null);
+//            if (returnVal == JFileChooser.APPROVE_OPTION){
+//                System.out.println("Usted eligio este archivo: " + chooser.getSelectedFile().getName());
+//                archivo = chooser.getSelectedFile().getAbsolutePath();
+//            }
+//        }
+//        catch (Exception e){
+//            System.out.println(e);
+//        }
         try{
-        archivo = "C:\\Users\\diego\\Desktop\\Diego Rivera\\texto\\pruebaLaberinto.txt";
-        JFileChooser chooser = new JFileChooser();
-        int returnVal = chooser.showOpenDialog(null);
-        if (returnVal == JFileChooser.APPROVE_OPTION){
-            System.out.println("Usted eligio este archivo: " + chooser.getSelectedFile().getName());
-            archivo = chooser.getSelectedFile().getAbsolutePath();
+            parrafo = LecturaArchivo.mostrarContenido(archivo);
+            contador = parrafo.size();
         }
-        parrafo = LecturaArchivo.mostrarContenido(archivo);
-        contador = parrafo.size();
-        }
-        catch (Exception e){
+        catch(Exception e){
             System.out.println(e);
         }
     }
@@ -72,8 +87,11 @@ import java.util.Vector;
     }
     
     public String Detectar(){
-        contador = contador -1;
-        return (String) parrafo.elementAt(contador);
+        //Al detectar se elimina la instruccion leida
+        contador = contador-1;
+        String linea = (String) parrafo.elementAt(0);
+        parrafo.removeElementAt(0);
+        return linea;
     }
     public Boolean medir(boolean medicion){
         boolean medir;

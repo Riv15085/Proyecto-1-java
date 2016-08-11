@@ -3,15 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-/*
-Universidad del Valle de Guatemala
-Proyecto1 AED
-Juan Pablo Cahueque
-Enma Lopez
-Diego Rivera
-Jorge Tezen
-Main.java
-*/
+package Proyecto;
 
 public class Main{
 	//returns a Decision based on the state of the sensor
@@ -42,14 +34,21 @@ public class Main{
                 if (nodoCola.getMovimiento().equalsIgnoreCase("STOP")){
                     System.out.println("Se regresara al ultimo cruce");
                     //Se sabe que el ultimo cruce existe en donde todavia quedan opciones
-                    do{
+                    while (nodoCola.getAnterior()!= null && (nodoCola.getAnterior().isDerecha()==false && nodoCola.getAnterior().isRecto()==false && nodoCola.getAnterior().isIzquierda()==false)){
                         //Se toma como nodo cola el nodo con el ultimo cruce, olvidandose de los que constituyen el camino infructuoso
                         nodoCola = nodoCola.getAnterior();
                         //mover motor contrario a lo que tiene....
                         motor.moverN(nodoCola.getMovimiento());
-                    }while (nodoCola.getAnterior().isDerecha()==false && nodoCola.getAnterior().isRecto()==false && nodoCola.getAnterior().isIzquierda()==false);
-                    nodoCola = nodoCola.getAnterior();
-                    motor.moverN(nodoCola.getMovimiento());
+                    }
+                    if (nodoCola.getAnterior()!=null){
+                        nodoCola = nodoCola.getAnterior();
+                        motor.moverN(nodoCola.getMovimiento());
+                    }
+                    else{
+                        nodoCola.setIzquierda(true);
+                        nodoCola.setDerecha(true);
+                        nodoCola.setRecto(true);
+                    }
                     //Se actualiza la nueva deteccion del ultimo cruce
                     if (nodoCola.isIzquierda()){
                         deteccion = "o".concat(deteccion.substring(1, 3));
@@ -71,6 +70,7 @@ public class Main{
                     }
                     System.out.println("Ahora se tomara otro camino, eliminando el anterior ");
                     //Se le indica al nodo su nueva decision
+                    
                     nodoCola.setMovimiento(miDecision.decidir(deteccion));
                     switch (nodoCola.getMovimiento()){
                         case ("Seguir Recto"):
@@ -84,7 +84,9 @@ public class Main{
                         nodoCola.setIzquierda(false); 
                         break;
                     }
-                    motor.mover(nodoCola.getMovimiento());
+                    if (!deteccion.equalsIgnoreCase("ooo")){
+                        motor.mover(nodoCola.getMovimiento());
+                    }
                 }
                 //volver a detectar
                 if (sensor.getContador()>0){
